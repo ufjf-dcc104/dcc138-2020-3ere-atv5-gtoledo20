@@ -1,14 +1,14 @@
-export default class Sprite {
+export default class Sprite{
     /*
-        É responsável por modelar algo que se move na tela.
+    É responsável por modelar algo que se move na tela.
     */
-    constructor({x=100, y=100, w=20, h=20, color = "white", vx=0, vy=0}={}){
+    constructor({x=100, y=100, w=20, h=20, color= "white", vx = 0, vy=0}={}){
         this.x = x;
         this.y = y;
         this.vx = vx;
         this.vy = vy;
-        this.w = w;
-        this.h = h;
+        this.w = h;
+        this.h = w;
         this.color = color;
     }
     desenhar(ctx){
@@ -18,5 +18,13 @@ export default class Sprite {
     passo(dt){
         this.x = this.x + this.vx*dt;
         this.y = this.y + this.vy*dt;
+    }
+    colidiuCom(outro){
+        return !(
+            this.x > outro.x + outro.w ||  
+            this.x + this.w < outro.x  ||
+            this.y > outro.y + outro.w ||
+            this.y + this.w < outro.y
+        );
     }
 }
