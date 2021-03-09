@@ -74,5 +74,6 @@ iniciar(){
             this.sprites.splice(idx, 1);
             }
         }
+        this.aRemover = [];
     }
 }
