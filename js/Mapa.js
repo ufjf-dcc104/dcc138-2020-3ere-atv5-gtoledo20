@@ -17,26 +17,22 @@ export default class Mapa {
         for (let c = 0; c < this.COLUNAS; c++) {
             switch (this.tiles[l][c]){
                 case 1:
-                    ctx.fillStyle = "darkgrey";
-                    ctx.fillRect(c*this.SIZE, l*this.SIZE, this.SIZE, this.SIZE);
+                    ctx.fillStyle = "darkgrey";       
                     ctx.lineWidth = 1;
                     ctx.strokeStyle = "black";
-                    ctx.strokeRect(c*this.SIZE, l*this.SIZE, this.SIZE, this.SIZE);
                 break;
                 case 2:
                     ctx.fillStyle = "brown";
-                    ctx.fillRect(c*this.SIZE, l*this.SIZE, this.SIZE, this.SIZE);
                     ctx.lineWidth = 1;
-                    ctx.strokeStyle = "brown";
-                    ctx.strokeRect(c*this.SIZE, l*this.SIZE, this.SIZE, this.SIZE);
+                    ctx.strokeStyle = "brown";                  
                 break;
                 default:
-                    ctx.fillStyle = "purple";
-                    ctx.fillRect(c*this.SIZE, l*this.SIZE, this.SIZE, this.SIZE);
+                    ctx.fillStyle = "purple";           
                     ctx.lineWidth = 1;
-                    ctx.strokeStyle = "purple";
-                    ctx.strokeRect(c*this.SIZE, l*this.SIZE, this.SIZE, this.SIZE);
+                    ctx.strokeStyle = "purple";     
             }
+            ctx.fillRect(c*this.SIZE, l*this.SIZE, this.SIZE, this.SIZE);
+            ctx.strokeRect(c*this.SIZE, l*this.SIZE, this.SIZE, this.SIZE);
         }
     }
 }
