@@ -103,7 +103,7 @@ export default class Cena {
     this.mapa = mapa;
     this.mapa.cena = this;
   }
-  createRandomSprites(n) {
+  createRandomSprites(n = 1) {
     let sprites = [];
     for (let i = 0; i < n; i++) {
       let sprite = new Sprite({
@@ -136,5 +136,11 @@ export default class Cena {
       color += rColor[Math.floor(Math.random() * 16)];
     }
     return color;
+  }
+
+  spritePosition(time){
+    setInterval(() => {
+      this.addRandomSprites(1);
+    }, time);
   }
 }

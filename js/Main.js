@@ -29,6 +29,7 @@ cena1.adicionar(en1);
 cena1.adicionar(new Sprite({ x: 115, y: 70, vy: 10, color: "red" }));
 cena1.adicionar(new Sprite({ x: 115, y: 160, vy:-10, color: "red" }));
 cena1.addRandomSprites(7);
+cena1.spritePosition(4000);
 
 cena1.iniciar();
 
