@@ -11,22 +11,28 @@ export default class Cena {
     this.dt = 0;
     this.idAnim = null;
     this.assets = assets;
+    this.mapa = null;
   }
+
   desenhar() {
-    this.ctx.fillStyle = "grey";
+    this.ctx.fillStyle = "white";
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    this.mapa.desenhar(this.ctx);
     if(this.assets.acabou()){
       for (let s = 0; s < this.sprites.length; s++) {
         const sprite = this.sprites[s];
         sprite.desenhar(this.ctx);
+
       }
     }
     this.ctx.fillStyle = "yellow";
     this.ctx.fillText(this.assets?.progresso(), 10, 20);
   }
+
   adicionar(sprite) {
     this.sprites.push(sprite);
   }
+
   passo(dt) {
     if(this.assets.acabou()){
       for (const sprite of this.sprites) {
@@ -34,7 +40,8 @@ export default class Cena {
       }
     }
   }
-quadro(t) {
+
+  quadro(t) {
     this.t0 = this.t0 ?? t;
     this.dt = (t - this.t0) / 1000;
 
@@ -46,16 +53,19 @@ quadro(t) {
     this.iniciar();
     this.t0 = t;
   }
+
   iniciar() {
     this.idAnim = requestAnimationFrame((t) => {
       this.quadro(t);
     });
   }
+
   parar() {
     cancelAnimationFrame(this.idAnim);
     this.t0 = null;
     this.dt = 0;
   }
+
   checaColisao() {
     for (let a = 0; a < this.sprites.length - 1; a++) {
       const spriteA = this.sprites[a];
@@ -67,6 +77,7 @@ quadro(t) {
       }
     }
   }
+
   quandoColidir(a, b) {
     if (!this.aRemover.includes(a)) {
       this.aRemover.push(a);
@@ -75,6 +86,7 @@ quadro(t) {
       this.aRemover.push(b);
     }
   }
+
   removerSprites() {
     for (const alvo of this.aRemover) {
       const idx = this.sprites.indexOf(alvo);
@@ -83,5 +95,10 @@ quadro(t) {
       }
     }
     this.aRemover = [];
+  }
+
+  configuraMapa(mapa){
+    this.mapa = mapa;
+    this.mapa.cena = this;
   }
 }
