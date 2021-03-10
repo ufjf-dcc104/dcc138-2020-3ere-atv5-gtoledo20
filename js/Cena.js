@@ -1,3 +1,4 @@
+import Sprite from "./Sprite.js";
 export default class Cena {
     /*
     É responsável por desenhar elementos na tela em uma animação.
@@ -101,5 +102,39 @@ export default class Cena {
   configuraMapa(mapa){
     this.mapa = mapa;
     this.mapa.cena = this;
+  }
+  createRandomSprites(n) {
+    let sprites = [];
+    for (let i = 0; i < n; i++) {
+      let sprite = new Sprite({
+        x: this.randomValue(64, 384),
+        y: this.randomValue(64, 256),
+        vx: this.randomValue(-10, 10),   
+        vy: this.randomValue(-10, 10),
+        color: this.randomColor(),
+      });
+      sprites.push(sprite);
+    }
+    return sprites;
+  }
+  addRandomSprites(n) {
+    let sprites = this.createRandomSprites(n);
+    for (let i = 0; i < sprites.length; i++) {
+      this.adicionar(sprites[i]);
+    }
+  }
+  randomValue(minimo, maximo) {
+    minimo = Math.ceil(minimo);
+    maximo = Math.floor(maximo);
+    return Math.floor(Math.random() * (maximo - minimo + 1)) + minimo;
+  }
+
+  randomColor() {
+    let rColor = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += rColor[Math.floor(Math.random() * 16)];
+    }
+    return color;
   }
 }
