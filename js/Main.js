@@ -76,15 +76,15 @@ cena1.adicionar(new Sprite({ x: 115, y: 160, vy:-10, color: "red", controlar: pe
 cena1.addRandomSprites(7);
 cena1.spritePosition(4000);
 
-cena1.iniciar();
+game.iniciar();
 
 document.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "s":
-      cena1.iniciar();
+      game.iniciar();
       break;
     case "S":
-      cena1.parar();
+      game.parar();
       break;
     case "c":
       assets.play("coin");
