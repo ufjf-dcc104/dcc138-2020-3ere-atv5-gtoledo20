@@ -24,6 +24,11 @@ export default class Cena {
     }
     this.ctx.fillStyle = "yellow";
     this.ctx.fillText(this.assets?.progresso(), 10, 20);
+
+    this.ctx.font = "25px Impact";
+    this.ctx.fillStyle = "green";
+    this.ctx.textAlign = "center";
+    this.ctx.fillText("Pontos: " + this.game.pontos, this.canvas.width/2, 20);
   }
 
   adicionar(sprite) {
