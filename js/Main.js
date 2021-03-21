@@ -5,6 +5,8 @@ import Game from "./Game.js";
 import CenaJogo from "./CenaJogo.js";
 import CenaCarregando from "./CenaCarregando.js";
 import CenaFim from "./CenaFim.js";
+import TelaFase01 from "./TelaFase01.js";
+import TelaFase02 from "./TelaFase02.js";
 
 
 const input = new InputManager();
@@ -35,11 +37,14 @@ input.configurarTeclado({
 
 const game = new Game(canvas, assets, input);
 const cena0 = new CenaCarregando();
-const cena1 = new CenaJogo();
-const cena2 = new CenaFim();
+const cena1 = new TelaFase01();
+const cena2 = new TelaFase02();
+const cena3 = new CenaFim();  
+
 game.adicionarCena("carregando", cena0);
 game.adicionarCena("fase_01", cena1);
-game.adicionarCena("fim", cena2);
+game.adicionarCena("fase_02", cena2);
+game.adicionarCena("fim", cena3);
 
 game.iniciar();
 
