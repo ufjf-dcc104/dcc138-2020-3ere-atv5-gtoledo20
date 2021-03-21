@@ -28,7 +28,7 @@ export default class TelaFase01 extends Cena{
         }
         if(a.tags.has("pc") && b.tags.has("coin")){
             this.assets.play("coin");
-            this.game.pontuacao+=1;
+            this.game.pontos+=1;
             if(!this.aRemover.includes(b)){
                 this.aRemover.push(b);
             }

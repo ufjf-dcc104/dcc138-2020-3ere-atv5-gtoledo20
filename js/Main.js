@@ -18,10 +18,13 @@ assets.carregaImagem("orc", "assets/orc.png");
 assets.carregaImagem("esqueleto", "assets/skelly.png");
 assets.carregaAudio("coin", "assets/coin.wav"); 
 assets.carregaAudio("boom", "assets/boom.wav");
+assets.carregaAudio("portal", "assets/portal.mp3");
 
 assets.carregaImagem("floor1", "assets/lava1.png");
 assets.carregaImagem("floor2", "assets/lava2.png");
 assets.carregaImagem("floor3", "assets/lava3.png");
+assets.carregaImagem("coin", "assets/coin.png");
+assets.carregaImagem("portal", "assets/portal.png");
 
 const canvas = document.querySelector("canvas");
 canvas.width = 14*32;

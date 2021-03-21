@@ -26,8 +26,8 @@ export default class TelaFase02 extends Cena{
                 this.aRemover.push(b);
             }
         }
-        if(a.tags.has("pc") && b.tags.has("coin")){
-            this.assets.play("coin");
+        if(a.tags.has("pc") && b.tags.has("moeda")){
+            this.assets.play("moeda");
             this.game.pontuacao+=1;
             if(!this.aRemover.includes(b)){
                 this.aRemover.push(b);
@@ -41,11 +41,11 @@ export default class TelaFase02 extends Cena{
     }
     preparar(){
         super.preparar();
-        const mapa1 = new Mapa(10,14,32);
-        mapa1.carregaMapa(modeloMapa2);
-        this.configuraMapa(mapa1);
+        const mapa2 = new Mapa(10,14,32);
+        mapa2.carregaMapa(modeloMapa2);
+        this.configuraMapa(mapa2);
 
-        const pc = new Sprite({x: 50, vx: 10});
+        const pc = new Sprite({x: 64, y: 160});
         pc.tags.add("pc");
         const cena = this;
         pc.controlar = function (dt) {
@@ -71,9 +71,21 @@ export default class TelaFase02 extends Cena{
             this.vy = 25*Math.sign(pc.y - this.y);
         }
 
-        const coloca = new Sprite({x: 300, y: 110, color: "blue", tags:["portal"]});
+        const en1 = new Sprite({x: 400, y: 200, vx: -10, color: "red", controlar: perseguePC, tags:["enemy"]});
+        const en2 = new Sprite({x: 240, y: 80, vx: -10, color: "red", controlar: perseguePC, tags:["enemy"]});
+        const en3 = new Sprite({x: 240, y: 160, vx: -10, color: "red", controlar: perseguePC, tags:["enemy"]});
+        const en4 = new Sprite({x: 360, y: 90, vx: -10, color: "red", controlar: perseguePC, tags:["enemy"]});
+        this.adicionar(en1);
+        this.adicionar(en2);
+        this.adicionar(en3);
+        this.adicionar(en4);
+        const coloca = new Sprite({x: 384, y: 260, color: "purple", tags:["portal"]});
         this.adicionar(coloca);
-        const coin = new Sprite({x: 300, y: 170, color: "yellow", tags:["moeda"]});
+        const coin = new Sprite({x: 300, y: 46, color: "yellow", tags:["coin"]});
+        const coin2 = new Sprite({x: 100, y: 46, color: "yellow", tags:["coin"]});
+        const coin3 = new Sprite({x: 400, y: 140, color: "yellow", tags:["coin"]});
         this.adicionar(coin);
+        this.adicionar(coin2);
+        this.adicionar(coin3);
     }
-} 
+}
